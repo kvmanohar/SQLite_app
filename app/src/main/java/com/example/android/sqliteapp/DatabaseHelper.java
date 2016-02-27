@@ -6,20 +6,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by VenkataManohar on 26/02/2016.
+ * This is a SQLiteOpenHelper extended class for Student Database
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "student.db";
-    public static final String TBL_NAME = "student_tbl";
-    public static final String COL_1 = "ID";
-    public static final String COL_2 = "NAME";
-    public static final String COL_3 = "SURNAME";
-    public static final String COL_4 = "MARKS";
+    public static String DB_NAME = "student.db";
+    public final String TBL_NAME = "student_tbl";
+    //    public static final String ID_COL = "ID";
+    public final String NAME_COL = "NAME";
+    public final String SURNAME_COL = "SURNAME";
+    public final String MARKS_COL = "MARKS";
 
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
+//        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
