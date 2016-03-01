@@ -2,6 +2,7 @@ package com.example.android.sqliteapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
@@ -53,8 +54,17 @@ public class DatabaseController {
         contentValues.put(dbHelper.SURNAME_COL,surname);
         contentValues.put(dbHelper.MARKS_COL,marks);
 
-        database.insert(dbHelper.TBL_NAME,null,contentValues);
+        database.insert(dbHelper.TBL_NAME, null, contentValues);
 
+    }
+
+    public Cursor fetchDbRow() {
+
+        String[] columns = new String[] {"_ID",dbHelper.NAME_COL, dbHelper.SURNAME_COL, dbHelper.MARKS_COL};
+
+        Cursor cursor = database.query(dbHelper.TBL_NAME,columns,null,null,null,null,null);
+        if (cursor != null)   cursor.moveToFirst();
+        return cursor;
     }
 
 
